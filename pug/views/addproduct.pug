@@ -1,0 +1,28 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  base(href='/api/')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
+  link(type='text/css' rel='stylesheet' href='/styles.css')
+  title FORMULARIO
+form(action='/api/productos/guardar' method='POST')
+  ul
+    li
+      label.fieldname(for='nombre')
+        p Nombre:
+      input#nombre.field(type='text' name='nombre')
+    li
+      label.fieldname(for='precio')
+        p Precio:
+      input#precio.field(type='number' name='precio')
+    li
+      label.fieldname(for='thumbnail')
+        p Thumbnail:
+      input#thumbnail.field(type='text' name='thumbnail')
+    li.center-content
+      button.btn(type='submit') Enviar datos
+    li.center-content
+      a(href='/api/productos/vista')
+        input.btn(type='button' value='Ver productos')

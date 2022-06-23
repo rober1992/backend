@@ -1,0 +1,33 @@
+import express from 'express';
+import path from 'path';
+import rutaProductos from './routes/products.js'
+import handlebars from 'express-handlebars'
+
+const app = express();
+
+const puerto = 3000 ;
+const server = app.listen(puerto, () =>
+  console.log('Server up en puerto', puerto)
+);
+
+server.on('error', (err) => {
+  console.log('ERROR ATAJADO', err);
+});
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+const layoutsFolderPath = path.resolve(__dirname, '../views/layouts')
+const publicPath = path.resolve(__dirname, '../public/');
+app.use(express.static(publicPath));
+
+app.set('view engine', 'handlebars');
+app.engine('handlebars', handlebars({
+    layoutsDir : layoutsFolderPath,
+}))
+
+
+
+
+app.use('/api', rutaProductos);
